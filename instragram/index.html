@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Layout</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+        }
+
+        .post-list {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(100px, 293px));
+            justify-content: center;
+            gap: 28px;
+        }
+
+        .post {
+            cursor: pointer;
+            position: relative;
+            display: block;
+        }
+
+        .post-image {
+            margin: 0;
+        }
+
+        .post-image img {
+            width: 100%;
+            vertical-align: top;
+        }
+
+        .post-overlate {
+            background-color: rgba(0, 0, 0, .4);
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+        }
+
+        .post:hover .post-overlate {
+            display: flex;
+        }
+
+        .span-post-likes,
+        .span-post-comments {
+            width: 80px;
+            margin: 5px;
+            font-weight: bold;
+            text-align: center;
+            display: inline-block;
+        }
+
+        @media screen and (max-width: 768px) {
+            .post-list {
+
+                gap: 3px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="post-list">
+        <a href="" class="post">
+            <figure class="post-image">
+                <img src="./assets/compu.jpg" alt="">
+            </figure>
+            <span class="post-overlate">
+                <p>
+                    <span class="span-post-likes">150</span>
+                    <span class="span-post-comments">20</span>
+                </p>
+            </span>
+        </a>
+
+        <a href="" class="post">
+            <figure class="post-image">
+                <img src="./assets/compu2.jpg" alt="">
+            </figure>
+            <span class="post-overlate">
+                <p>
+                    <span class="span-post-likes">150</span>
+                    <span class="span-post-comments">20</span>
+                </p>
+            </span>
+        </a>
+
+        <a href="" class="post">
+            <figure class="post-image">
+                <img src="./assets/compu3.jpg" alt="">
+            </figure>
+            <span class="post-overlate">
+                <p>
+                    <span class="span-post-likes">150</span>
+                    <span class="span-post-comments">20</span>
+                </p>
+            </span>
+        </a>
+
+        <a href="" class="post">
+            <figure class="post-image">
+                <img src="./assets/compu.jpg" alt="">
+            </figure>
+            <span class="post-overlate">
+                <p>
+                    <span class="span-post-likes">150</span>
+                    <span class="span-post-comments">20</span>
+                </p>
+            </span>
+        </a>
+
+        <a href="" class="post">
+            <figure class="post-image">
+                <img src="./assets/compu2.jpg" alt="">
+            </figure>
+            <span class="post-overlate">
+                <p>
+                    <span class="span-post-likes">150</span>
+                    <span class="span-post-comments">20</span>
+                </p>
+            </span>
+        </a>
+
+        <a href="" class="post">
+            <figure class="post-image">
+                <img src="./assets/compu3.jpg" alt="">
+            </figure>
+            <span class="post-overlate">
+                <p>
+                    <span class="span-post-likes">150</span>
+                    <span class="span-post-comments">20</span>
+                </p>
+            </span>
+        </a>
+        <a href="" class="post">
+            <figure class="post-image">
+                <img src="./assets/compu.jpg" alt="">
+            </figure>
+            <span class="post-overlate">
+                <p>
+                    <span class="span-post-likes">150</span>
+                    <span class="span-post-comments">20</span>
+                </p>
+            </span>
+        </a>
+
+        <a href="" class="post">
+            <figure class="post-image">
+                <img src="./assets/compu2.jpg" alt="">
+            </figure>
+            <span class="post-overlate">
+                <p>
+                    <span class="span-post-likes">150</span>
+                    <span class="span-post-comments">20</span>
+                </p>
+            </span>
+        </a>
+
+        <a href="" class="post">
+            <figure class="post-image">
+                <img src="./assets/compu3.jpg" alt="">
+            </figure>
+            <span class="post-overlate">
+                <p>
+                    <span class="span-post-likes">150</span>
+                    <span class="span-post-comments">20</span>
+                </p>
+            </span>
+        </a>
+    </section>
+</body>
+
+</html>
