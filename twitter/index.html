@@ -6,348 +6,555 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
     <style>
-        body {
-            font-family: Arial;
-            margin: 0;
-            background-color: rgb(21, 32, 43);
-        }
+       
 
         .main {
             justify-content: center;
-            grid-template-columns: minmax(auto, 1024px);
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
         }
 
         .container {
             display: grid;
-            grid-template-columns: minmax(63px, 402px) minmax(598px, 1fr) minmax(350px, 534px);
-            grid-template-rows: 53px 243px;
-            grid-template-areas:
-                "logo title finder"
-                "menu middle relevants"
-                "menu middle notices";
+            grid-template-columns: minmax(90px, 402px) 1fr;
+            grid-template-rows: 1fr;
             height: 100vh;
-            justify-content: center;
-        }
-
-        .logo {
-            padding: 6px 20px;
-            text-align: center;
-        }
-
-        .logo img {
-            width: 42px;
-            height: 43px;
-
+            color: white;
         }
 
         .menu {
-            grid-area: menu;
-            padding: 6px 20px;
-            text-align: center;
+            border-right: solid;
+            border-width: .5px;
+            border-color: rgba(255, 255, 255, 0.25);
+            background-color: rgb(21, 32, 43);
+
+        }
+
+        .content {
+            display: grid;
+            grid-template-columns: 599px 1fr;
+            grid-template-rows: 53px 117px 1fr;
+            grid-template-areas:
+                "title finder"
+                "publisher sr-content"
+                "publications sr-content";
+            overflow: hidden;
+            overflow-y: auto;
+            height: 100vh;
         }
 
         .title {
             grid-area: title;
-            font-size: 30px;
-            font-weight: bold;
-            border: .3px solid;
+            border-bottom: solid;
+            border-width: .5px;
             border-color: rgba(255, 255, 255, 0.25);
-            border-bottom: unset;
-            border-top: unset;
-            padding: 10px 20px;
+            position: sticky;
+            top: 0;
+            background-color: rgb(21, 32, 43);
+            padding: 15px 15px;
+            font-weight: bold;
         }
+
 
         .finder {
             grid-area: finder;
-            padding: 0 120px 0 30px;
-            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1;
+            background-color: rgb(21, 32, 43);
+            padding: 0 134px 0 30px;
             display: flex;
             justify-content: center;
             align-items: center;
+            padding: 0 134px 0 30px;
+            border-left: solid;
+            border-width: .5px;
+            border-color: rgba(255, 255, 255, 0.25);
+
         }
 
-        .finder__input {
+        .finder input {
+            border-radius: 20px;
+            height: 80%;
             width: 100%;
-            border: 1px;
-            border-color: rgba(255, 255, 255, 0.25);
-            box-sizing: border-box;
-            border-radius: 30px;
-            font-size: 16px;
-            height: 40px;
+            outline: none;
+            border: 0;
             padding: 0 10px;
-            background-color: rgba(255, 255, 255, .2);
+            background-color: rgb(37, 51, 65);
+            font-size: 16px;
+            color: white;
         }
 
-        .middle {
-            grid-area: middle;
-            border: .3px solid;
+        .publisher {
+            grid-area: publisher;
+            border-bottom: solid;
+            border-width: .5px;
             border-color: rgba(255, 255, 255, 0.25);
             padding: 10px 15px;
-        }
-
-        .relevants {
-            padding: 10px 120px 0 30px;
-            grid-area: relevants;
             display: grid;
-            grid-template-columns: 100%;
-            grid-template-rows: 45px repeat(2, 1fr);
+            grid-template-columns: 59px repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+            grid-template-areas:
+                "profile text text"
+                ". actions button";
         }
 
-        .relevants__title,
-        .notices__title {
-            border-top-left-radius: 20px;
-            border-top-right-radius: 20px;
+        .image {
+            grid-area: profile;
+        }
 
-            padding: 10px 15px;
-            border: .3px solid;
-            border-color: rgba(255, 255, 255, 0.25);
+        .image img {
+            width: 49px;
+            height: 49px;
+        }
+
+        .think {
+            grid-area: text;
+            align-self: center;
+        }
+
+        .think p {
             font-size: 20px;
-            border-bottom: unset;
+            font-weight: bold;
+            margin: auto;
+        }
+
+        .actions {
+            grid-area: actions;
+            align-self: center;
+        }
+
+        .actions i {
+            width: 37px;
+            height: 37px;
+            padding: 5px;
+            box-sizing: border-box;
+            color: rgba(29, 161, 242, 1.00);
+        }
+
+        .tweet {
+            grid-area: button;
+            align-self: center;
+            justify-self: flex-end;
+            padding-right: 10px;
+        }
+
+        .tweet button {
+            background-color: rgba(29, 161, 242, 1.00);
+            border-radius: 30px;
+            height: 40px;
+            padding: 5px 5px;
+            border: 0;
+            font-size: 18px;
+            color: white;
             font-weight: bold;
         }
 
-        .relevants__person,
-        .notices__notice {
-            padding: 10px 15px;
-            display: grid;
-            border: .3px solid;
+        .sr-content {
+            grid-area: sr-content;
+            position: relative;
+            padding: 0 134px 0 30px;
+            border-left: solid;
+            border-width: .5px;
             border-color: rgba(255, 255, 255, 0.25);
         }
 
-        .relevants__person:last-child,
-        .notices__notice:last-child {
-            border-bottom-right-radius: 20px;
-            border-bottom-left-radius: 20px;
+        .sr-content-card {
+            border-radius: 10px;
+            background-color: rgb(25, 39, 52);
+            border-color: rgb(25, 39, 52);
+            max-height: 70%;
+            margin: 10px 0;
+        }
+
+        .sr-content-card p {
+            margin: 0;
+        }
+
+        .sr-content-card__header {
+            font-size: 20px;
+            font-weight: bold;
+            height: 50px;
+            padding: 10px 15px;
+            box-sizing: border-box;
+            border-bottom: solid;
+            border-width: .5px;
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+
+        .sr-content-card__notice {
+            padding: 10px 15px;
+            height: 100px;
+            border-bottom: solid;
+            border-width: .5px;
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .sr-content-card__notice:last-child {
+            border: unset;
+        }
+
+
+        .child-content {
+            min-height: 1500px;
+            height: 100%;
+        }
+
+        .scroller {
+            position: sticky;
+            top: -200px;
+        }
+
+        .publications {
+            grid-area: publications;
+            border-top: solid;
+            border-width: .5px;
+            border-color: rgba(255, 255, 255, 0.25);
+            margin-top: 10px;
+
+        }
+
+        .publication {
+            padding-top: 10px;
+            padding-right: 15px;
+            padding-left: 15px;
+            display: grid;
+            grid-template-columns: 59px 1fr;
+            grid-template-rows: auto 1fr 40px;
+            grid-template-areas:
+                "publication-user publication-text"
+                ". publication-photo"
+                ". publication-actions";
+            border-bottom: solid;
+            border-width: .5px;
+            border-color: rgba(255, 255, 255, 0.25);
+        }
+
+        .publication:first-child {
             border-top: unset;
         }
 
-        .notices {
-            grid-area: notices;
-            padding: 10px 120px 0 30px;
-            display: grid;
-            grid-template-columns: 100%;
-            grid-template-rows: 45px repeat(2, 1fr);
+
+        .publication__pic {
+            grid-area: publication-user;
+            cursor: pointer;
+        }
+
+        .publication__pic img {
+            width: 49px;
+            height: 49px;
+        }
+
+        .publication__text {
+            grid-area: publication-text;
+        }
+
+        .publication_photo {
+            grid-area: publication-photo;
+            cursor: pointer;
+        }
+
+        .publication_photo img {
+            width: 100%;
+            max-height: 300px;
+            border-radius: 30px;
+            object-fit: cover;
+        }
+
+        .publication__actions {
+            grid-area: publication-actions;
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+        }
+
+        .publication__actions span {
+            cursor: pointer;
         }
 
 
 
-        .item {
-            color: white;
-        }
 
         @media screen and (max-width: 1296px) {
 
             .finder,
-            .relevants {
-                padding: 0 20px 0 20px;
+            .sr-content {
+                padding: 0 30px 0 30px;
             }
 
-            .notices {
-                padding: 10px 20px 0 20px;
+            .content {
+                grid-template-columns: minmax(450px, 599px) minmax(350px, 1fr);
             }
 
-
+            .container {
+                grid-template-columns: 265px 1fr;
+            }
+            .actions i:last-child {
+                display: none;
+            }
         }
 
-        @media screen and (max-width: 1004px) {
-            .container {
-                grid-template-columns: minmax(65px, 187px) minmax(600px, 1fr) minmax(0px, 187px);
-            }
+        @media screen and (max-width: 1104px) {
 
-            .relevants,
             .finder,
-            .notices {
+            .sr-content {
                 display: none;
             }
 
-            .menu,
-            .logo {
-                padding: 10px 0;
-                text-align: center;
+            .content {
+                grid-template-columns: 599px;
             }
 
-        }
-
-        @media screen and (max-width: 704px) {
             .container {
-                grid-template-columns: 65px 1fr;
-            }
-
-        }
-
-        @media only screen and (max-device-width : 640px) {
-            .container {
-                display: grid;
-                grid-template-columns: 1fr;
-                grid-template-rows: 53px calc(100vh - (53px + 60px)) 60px;
-                grid-template-areas:
-                    "title"
-                    "middle"
-                    "menu";
-                height: 100vh;
-                justify-content: center;
-            }
-
-            .logo {
-                display: none;
+                grid-template-columns: 187px 1fr;
             }
 
             .menu {
-                position: relative;
+                text-align: center;
+            }
+            
+        }
+
+        @media screen and (max-width: 768px) {
+            .container {
+                grid-template-columns: 63px 1fr;
+            }
+
+            .content {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media only screen and (max-device-width : 640px) {
+            .menu {
+                grid-area: menu;
+                position: absolute;
+                bottom: 0;
                 right: 0;
                 left: 0;
-                top: 0;
+                height: 50px;
             }
-            .middle {
-                overflow-y: auto;
+            .title {
+                grid-area: menu;
+                position: absolute;
+                right: 0;
+                left: 0;
+            }
+            .container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 50px;
+                grid-template-areas: 
+                "content"
+                "menu";
+                grid-area: unset;
+            }
+
+            .content {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-template-rows: 53px 1fr;
+                grid-template-areas:
+                    "title"
+                    "publications";
+            }
+
+
+            .publisher {
+                display: none;
+            }
+            .actions i:last-child {
+                display: none;
             }
         }
     </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
+        integrity="sha512-+4zCK9k+qNFUR5X+cKL9EIR+ZOhtIloNl9GIKS57V1MyNsYpYcUrUeQc9vNfzsWfV28IaLL3i96P9sdNyeRssA=="
+        crossorigin="anonymous" />
 </head>
 
 <body>
     <main class="main">
-        <di class="container">
-            <div class="item logo">
-                <img src="./assets/image.png" alt="">
+        <div class="container">
+            <div class="menu">
+                Menu
             </div>
-            <div class="item menu">
-                Menu Lis
-            </div>
-            <div class="item title">
-                Twitter
-            </div>
-            <div class="item finder">
-                <input type="text" class="finder__input" placeholder="Buscar en twitter">
-            </div>
-            <div class="item middle">
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                hhh
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-                <br>
-            </div>
-            <div class="item relevants">
 
-                <div class="relevants__title">
-                    Personas relevantes
+            <div class="content">
+
+                <div class="title">
+                    <span>Title</span>
                 </div>
-                <div class="relevants__person">
-                    P1
-                </div>
-                <div class="relevants__person">
-                    P2
+                <div class="finder">
+                    <input type="text" placeholder="Buscar en twitter">
                 </div>
 
+                <div class="publisher">
+                    <div class="image">
+                        <img src="./assets/147140.png" alt="">
+                    </div>
+                    <div class="think">
+                        <p>¿Que estas pensando?</p>
+                    </div>
+                    <div class="actions">
+                        <i class="fas fa-photo-video"></i>
+                        <i class="fas fa-audio-description"></i>
+                        <i class="fas fa-chart-line"></i>
+                        <i class="far fa-grin-beam"></i>
+                        <i class="fas fa-calendar-plus"></i>
+                    </div>
+                    <div class="tweet">
+                        <button>
+                            Twittear
+                        </button>
+                    </div>
+                </div>
+                <div class="sr-content">
+                    <div class="child-content">
+                        <div class="scroller">
+                            <div class="sr-content-card">
+                                <div class="sr-content-card__header">
+                                    <p>Qúe está pasando</p>
+                                </div>
+                                <div class="sr-content-card__notice">
+                                    <p>Noticia</p>
+                                </div>
+                                <div class="sr-content-card__notice">
+                                    <p>Noticia</p>
+                                </div>
+                                <div class="sr-content-card__notice">
+                                    <p>Noticia</p>
+                                </div>
+                            </div>
+
+                            <div class="sr-content-card">
+                                <div class="sr-content-card__header">
+                                    <p>A quíen seguir</p>
+                                </div>
+                                <div class="sr-content-card__notice">
+                                    <p>User 1</p>
+                                </div>
+                                <div class="sr-content-card__notice">
+                                    <p>User 2</p>
+                                </div>
+                                <div class="sr-content-card__notice">
+                                    <p>User 3</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="publications">
+
+                    <div class="publication">
+                        <div class="publication__pic">
+                            <img src="./assets/147140.png" alt="">
+                        </div>
+                        <div class="publication__text">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s
+                        </div>
+                        <div class="publication_photo">
+                            <img src="./assets/Ep88B1jXEAMap6v.jpg" alt="">
+                        </div>
+                        <div class="publication__actions">
+                            <span>
+                                <i class="far fa-comment"></i> <small>200</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-retweet"></i> <small>300</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-heart"></i> <small>20</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-upload"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication__pic">
+                            <img src="./assets/147140.png" alt="">
+                        </div>
+                        <div class="publication__text">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s
+                        </div>
+                        <div class="publication_photo">
+                            <img src="./assets/Ep_Q86wW4AAadPP.png" alt="">
+                        </div>
+                        <div class="publication__actions">
+                            <span>
+                                <i class="far fa-comment"></i> <small>200</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-retweet"></i> <small>300</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-heart"></i> <small>20</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-upload"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication__pic">
+                            <img src="./assets/147140.png" alt="">
+                        </div>
+                        <div class="publication__text">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s
+                        </div>
+                        <div class="publication_photo">
+                            <img src="./assets/Ep_O1BaXMAE4N4g.jpg" alt="">
+                        </div>
+                        <div class="publication__actions">
+                            <span>
+                                <i class="far fa-comment"></i> <small>200</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-retweet"></i> <small>300</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-heart"></i> <small>20</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-upload"></i>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="publication">
+                        <div class="publication__pic">
+                            <img src="./assets/147140.png" alt="">
+                        </div>
+                        <div class="publication__text">
+                            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has
+                            been the industry's standard dummy text ever since the 1500s
+                        </div>
+                        <div class="publication_photo">
+                            <img src="./assets/Ep88B1jXEAMap6v.jpg" alt="">
+                        </div>
+                        <div class="publication__actions">
+                            <span>
+                                <i class="far fa-comment"></i> <small>200</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-retweet"></i> <small>300</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-heart"></i> <small>20</small>
+                            </span>
+                            <span>
+                                <i class="fas fa-upload"></i>
+                            </span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="item notices">
-                <div class="notices__title">
-                    Nocias
-                </div>
-                <div class="notices__notice">
-                    N1
-                </div>
-                <div class="notices__notice">
-                    N2
-                </div>
-            </div>
-        </di>
+        </div>
     </main>
 </body>
 
